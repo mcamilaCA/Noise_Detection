@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-int sensor = 7; // pin in which the sound sensor is
+int sensor = 2; // pin in which the sound sensor is
 int led = 13; // pin where the led (positive side) is connected
 boolean sensorState = false; // state of the led is off by default 
 
@@ -15,13 +15,13 @@ void loop() {
 
   // if noise is detected 
   if (data == 1){
-    if(sensorState == false){
-      sensorState = HIGH; // changing the state of led since there is noirse
-      digitalWrite(led, HIGH); // turning on led light
+    if(sensorState == true){
+      sensorState = LOW; // changing the state of led since there is noise
+      digitalWrite(led, LOW); // turning on led light
     }
     else{
-      sensorState = true; // is the led is high, turn it off
-      digitalWrite(led, LOW); // turning off led light
+      sensorState = true; // if the led is low, turn it on
+      digitalWrite(led, HIGH); // turning off led light
     }
   }
 }
